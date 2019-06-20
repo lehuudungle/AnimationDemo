@@ -9,12 +9,28 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
+    @IBOutlet weak var Label: UILabel!
+    var labelPositionisLeft = true
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
     }
-
+    
+    
+    @IBAction func startAnimation(_ sender: Any) {
+        UIView.animate(withDuration: 0.5, delay: 0.5, usingSpringWithDamping: 0, initialSpringVelocity: 100, options: .curveEaseInOut, animations: {
+            if self.labelPositionisLeft {
+                self.Label.center.x = self.view.bounds.width - 100
+            }
+            else {
+                self.Label.center.x = 100
+            }
+            self.labelPositionisLeft = !(self.labelPositionisLeft)
+        }, completion: nil)
+    }
+    
 
 }
+
 
